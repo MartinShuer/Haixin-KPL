@@ -54,6 +54,7 @@ class LotteryGame {
     }
 
     startLottery() {
+        if (this.debug) console.log('[lottery] startLottery clicked');
         if (this.isRunning) return;
         
         this.isRunning = true;

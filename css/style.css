@@ -553,6 +553,12 @@ body::after {
     box-shadow: 0 0 15px rgba(0, 206, 209, 0.3);
     backdrop-filter: blur(8px);
 }
+/* remove native button chrome when using <button> inside the grid */
+.lottery-btn {
+    border: none;
+    padding: 0;
+    background-clip: padding-box;
+}
 
 .lottery-btn:hover {
     /* 仅做视觉反馈：缩放与高光，避免改变布局或定位以免抖动 */
