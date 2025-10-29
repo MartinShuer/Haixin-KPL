@@ -246,6 +246,27 @@ body::after {
     line-height: 1.3;
 }
 
+
+/* Background image element styling: use object-fit to show full image reliably */
+.bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* ensure whole image visible */
+    object-position: center center;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+}
+
+/* ensure page content sits above bg image */
+.main-page > *:not(.bg-img),
+.lottery-page > *:not(.bg-img),
+.submit-page > *:not(.bg-img) {
+    position: relative;
+    z-index: 1;
+}
 .sub-title {
     font-size: 18px;
     color: #00CED1;
@@ -417,43 +438,73 @@ body::after {
 }
 
 .lottery-container {
-    width: 100%;
-    max-width: 400px;
-    margin-bottom: 30px;
+    /* 九宫格容器：保持正方形并相对于 .lottery-page 定位
+       通过 CSS 变量可微调位置与尺寸 */
     position: absolute;
-    top: 33%;
-    left: 50%;
+    --grid-width: 72%;
+    --grid-left: 50%;
+    --grid-top: 58%;
+    width: var(--grid-width);
+    max-width: 460px;
+    aspect-ratio: 1 / 1; /* 正方形九宫格 */
+    top: var(--grid-top);
+    left: var(--grid-left);
     transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
 }
 
 .lottery-grid {
+    width: 100%;
+    height: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 6%;
     background: rgba(0, 206, 209, 0.05);
-    padding: 20px;
+    padding: 6%;
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0, 206, 209, 0.15);
     border: 1px solid rgba(0, 206, 209, 0.2);
-    margin-bottom: 25px;
+    box-sizing: border-box;
+}
+
+/* 调整格子内图片与中间按钮的响应式尺寸 */
+.lottery-grid .grid-item img {
+    width: 70%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.lottery-grid .lottery-btn .start-9-btn-img {
+    width: min(60%, 160px);
+    height: auto;
+}
+
+@media (max-width: 420px) {
+    .lottery-container { --grid-width: 86%; }
+    .lottery-grid { gap: 4%; padding: 4%; }
+    .lottery-grid .grid-item img { width: 78%; }
+    .lottery-grid .lottery-btn .start-9-btn-img { width: min(68%, 120px); }
 }
 
 .grid-item {
-    aspect-ratio: 1;
+    aspect-ratio: 1 / 1;
     background: rgba(0, 206, 209, 0.08);
     border-radius: 12px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 10px;
+    justify-content: center;
+    padding: 6px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(0, 206, 209, 0.25);
+    transition: all 0.18s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(0, 206, 209, 0.18);
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(5px);
 }
 
 .grid-item::before {
