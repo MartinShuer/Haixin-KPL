@@ -442,8 +442,8 @@ body::after {
        通过 CSS 变量可微调位置与尺寸 */
     position: absolute;
     --grid-width: 72%;
-    --grid-left: 50%;
-    --grid-top: 58%;
+    --grid-left: 54%; /* 微调：向右偏移，靠近背景视觉元素 */
+    --grid-top: 60%;  /* 微调：向下偏移，使九宫格居于画面中下部 */
     width: var(--grid-width);
     max-width: 460px;
     aspect-ratio: 1 / 1; /* 正方形九宫格 */
