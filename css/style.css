@@ -162,7 +162,8 @@ body::after {
     transform: translateX(-50%);
     width: 90%;
     height: 26%;
-    background-image: url('../image/decorations/index-top.png');
+    /* background-image deferred to JS lazy loader */
+    background-image: none;
 }
 
 .decor-index-corner {
@@ -170,7 +171,8 @@ body::after {
     top: 10%;
     width: 34%;
     height: 22%;
-    background-image: url('../image/decorations/index-corner.png');
+    /* background-image deferred to JS lazy loader */
+    background-image: none;
 }
 
 .decor-index-bottom {
@@ -179,7 +181,8 @@ body::after {
     transform: translateX(-50%);
     width: 100%;
     height: 20%;
-    background-image: url('../image/decorations/index-bottom-sparkles.png');
+    /* background-image deferred to JS lazy loader */
+    background-image: none;
 }
 
 .title {
@@ -201,7 +204,8 @@ body::after {
     justify-content: space-between;
     align-items: center;
     padding: 40px 20px;
-    background: url('../images/index-bg.jpg') center top/100% auto no-repeat;
+    /* background image deferred to JS lazy loader to improve first paint */
+    background: none;
     background-color: #0a1f2e;
     position: relative;
 }
@@ -369,7 +373,8 @@ body::after {
     justify-content: flex-start;
     align-items: center;
     padding: 30px 20px;
-    background: url('../images/lottery-bg.jpg') center top/100% auto no-repeat;
+    /* background image deferred to JS lazy loader to improve first paint */
+    background: none;
     background-color: #0a1f2e;
     position: relative;
 }
@@ -381,7 +386,8 @@ body::after {
     transform: translateX(-50%);
     width: 92%;
     height: 48%;
-    background-image: url('../image/decorations/lottery-frame.png');
+    /* background-image deferred to JS lazy loader */
+    background-image: none;
 }
 
 .decor-lottery-top {
@@ -390,7 +396,8 @@ body::after {
     transform: translateX(-50%);
     width: 90%;
     height: 10%;
-    background-image: url('../image/decorations/lottery-topbar.png');
+    /* background-image deferred to JS lazy loader */
+    background-image: none;
 }
 
 .decor-lottery-bottom {
@@ -399,7 +406,8 @@ body::after {
     transform: translateX(-50%);
     width: 92%;
     height: 18%;
-    background-image: url('../image/decorations/lottery-bottom-rules-bg.png');
+    /* background-image deferred to JS lazy loader */
+    background-image: none;
 }
 
 .lottery-page .title {

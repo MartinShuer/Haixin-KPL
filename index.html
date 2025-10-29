@@ -8,14 +8,15 @@
 </head>
 <body>
     <div class="container">
-        <div class="main-page">
+    <div class="main-page" data-bg="images/index-bg.jpg">
             <!-- ...existing code... -->
             <div class="button-container">
                 <button class="start-lottery-btn" onclick="window.location.href='lottery.html'" style="background: none; border: none; padding: 0; cursor: pointer;">
-                    <img src="images/start-button.png" alt="开始抽奖" class="start-btn-img" />
+                    <img src="images/start-button.png" alt="开始抽奖" class="start-btn-img" loading="lazy" />
                 </button>
             </div>
         </div>
     </div>
-</body>
+    </body>
+        <script src="js/lazyload.js"></script>
 </html>
