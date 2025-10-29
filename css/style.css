@@ -273,7 +273,7 @@ body::after {
     width: 100%;
     display: flex;
     justify-content: center;
-    top: 50%; /* move button vertically to 50% of canvas */
+    top: 25%; /* move button vertically to 25% of canvas (moved up) */
     z-index: 10;
     pointer-events: none;
 }
