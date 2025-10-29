@@ -962,7 +962,7 @@ body::after {
     margin-bottom: 12px;
 }
 .submit-page.has-prize .form-group label {
-    flex: 0 0 110px; /* 稍窄的标签宽度，节省空间 */
+    flex: 0 0 90px; /* 更窄的标签宽度，使文本框左移 */
     text-align: right;
     color: #FFDDAA;
     font-weight: 700;
