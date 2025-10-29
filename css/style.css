@@ -1281,3 +1281,28 @@ body.debug .lottery-container { pointer-events: none; }
 /* debug 时突出显示开始按钮，便于定位 */
 body.debug .button-container { z-index: 10010; pointer-events: auto; }
 body.debug .start-btn-img { outline: 3px solid rgba(255,255,0,0.9); }
+
+/* 额外 debug：标注装饰框和页面中心线，帮助定位不对齐问题 */
+body.debug .decor-lottery-frame { outline: 2px dashed rgba(255,100,100,0.85); }
+body.debug .decor-lottery-frame::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(255,100,100,0.85);
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+body.debug .lottery-page::after {
+    /* 页面视觉中线（根容器 center） */
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(0,255,0,0.8);
+    pointer-events: none;
+}
