@@ -945,52 +945,51 @@ body::after {
 
 /* 提交页：当用户为中奖者时，调整表单排布为更紧凑且居中 */
 .submit-page.has-prize .submit-form {
-    max-width: 520px;
-    /* 左移到页面 20% 处，使表单起点位于视口宽度的20%位置 */
-    margin-left: 20%;
-    margin-right: auto;
-    gap: 18px;
-    padding: 18px 12px 48px;
+    max-width: 480px;
+    margin: 0 auto;
+    gap: 12px;
+    padding: 12px 14px 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 }
-.submit-page.has-prize .form-group {
-    margin-bottom: 18px;
-}
-/* 将 label 放在输入框前面，横向布局 */
+
+/* 更紧凑且对齐的表单行：标签固定宽度，输入占剩余空间 */
 .submit-page.has-prize .form-group {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 18px;
+    gap: 10px;
+    margin-bottom: 12px;
 }
 .submit-page.has-prize .form-group label {
-    flex: 0 0 120px; /* 固定标签宽度 */
+    flex: 0 0 110px; /* 稍窄的标签宽度，节省空间 */
     text-align: right;
     color: #FFDDAA;
     font-weight: 700;
-    margin-right: 8px;
+    margin: 0;
+    font-size: 14px;
 }
 .submit-page.has-prize .form-group input,
 .submit-page.has-prize .form-group textarea {
-    flex: 1 1 auto; /* 输入框占据剩余空间 */
-    width: auto; /* 覆盖之前的 width 规则 */
+    flex: 1 1 auto;
+    width: auto;
     box-sizing: border-box;
-    padding: 20px 24px;
-    font-size: 16px;
+    padding: 12px 14px;
+    font-size: 15px;
+    border-radius: 8px;
 }
 .submit-page.has-prize .form-group textarea {
-    min-height: 140px;
+    min-height: 100px;
 }
-.submit-page.has-prize .form-group label {
-    font-size: 15px;
-    color: #FFDDAA;
-}
+
+/* 居中显示并使用指定提交图片 */
 .submit-page.has-prize .submit-btn.start-btn {
-    width: min(360px, 84%);
-    max-width: 360px;
+    width: min(340px, 86%);
+    max-width: 340px;
     height: auto;
-    margin: 12px auto 0;
+    margin: 10px auto 0;
     display: block;
-    background-image: url('../images/start-button.png');
+    background-image: url('../images/submit-button.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
