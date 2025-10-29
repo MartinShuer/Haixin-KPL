@@ -289,8 +289,8 @@ body::after {
     display: flex;
     justify-content: center;
     bottom: 13%; /* 约膝盖高度，9:16画布下13%较为自然 */
-    z-index: 10;
-    pointer-events: none;
+    z-index: 9999; /* 提高到最上层，防止被背景或装饰遮挡 */
+    pointer-events: auto; /* 允许点击（debug/最终都可用） */
 }
 
 .start-lottery-btn {
@@ -1259,3 +1259,7 @@ body.debug .lottery-container {
 body.debug .bg-img,
 body.debug .container,
 body.debug .lottery-container { pointer-events: none; }
+
+/* debug 时突出显示开始按钮，便于定位 */
+body.debug .button-container { z-index: 10010; pointer-events: auto; }
+body.debug .start-btn-img { outline: 3px solid rgba(255,255,0,0.9); }
