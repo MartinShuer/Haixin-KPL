@@ -136,12 +136,13 @@ body::after {
 .container {
     width: 100%;
     max-width: 480px;
-    min-height: 100vh;
+    margin: 0 auto;
+    /* make this element a strict 9:16 canvas */
     aspect-ratio: 9 / 16;
     position: relative;
     z-index: 1;
-    display: flex;
-    flex-direction: column;
+    display: block;
+    overflow: hidden;
 }
 
 /* ========== 通用装饰位 ========== */
@@ -234,16 +235,18 @@ body::after {
 }
 
 .main-title {
-    font-size: 48px;
-    font-weight: bold;
-    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
-    margin-bottom: 15px;
-    letter-spacing: 3px;
-    line-height: 1.3;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* keep content toward bottom so button sits in intended area */
+    justify-content: flex-end;
+    align-items: center;
+    padding: 6% 6%;
+    background: none;
+    background-color: #0a1f2e;
+    position: relative;
+    box-sizing: border-box;
 }
 
 .sub-title {
@@ -270,7 +273,7 @@ body::after {
     width: 100%;
     display: flex;
     justify-content: center;
-    bottom: 13%; /* 约膝盖高度，9:16画布下13%较为自然 */
+    bottom: 8%; /* keep button within 9:16 canvas */
     z-index: 10;
     pointer-events: none;
 }
@@ -288,8 +291,7 @@ body::after {
 }
 
 .start-btn-img {
-    width: 330px;
-    max-width: 85vw;
+    width: clamp(160px, 60vw, 330px);
     height: auto;
     display: block;
     margin: 0 auto;
