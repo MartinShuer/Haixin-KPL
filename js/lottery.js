@@ -231,6 +231,55 @@ class LotteryGame {
 
 // 页面加载完成后初始化
 document.addEventListener('DOMContentLoaded', () => {
-    new LotteryGame();
+    // 初始化抽奖逻辑实例
+    const lotteryGame = new LotteryGame();
+
+    // frame-based 对齐：把 .lottery-container 的中心对齐到装饰框 .decor-lottery-frame 的视觉中心
+    function alignLotteryToFrame() {
+        try {
+            const frame = document.querySelector('.decor-lottery-frame');
+            const container = document.querySelector('.lottery-container');
+            const page = document.querySelector('.lottery-page') || document.querySelector('.container');
+            if (!frame || !container || !page) return;
+
+            // 计算 frame 在 page 内的中心坐标（相对于 page 的左上角）
+            const pageRect = page.getBoundingClientRect();
+            const frameRect = frame.getBoundingClientRect();
+
+            const centerX = (frameRect.left + frameRect.right) / 2 - pageRect.left;
+            const centerY = (frameRect.top + frameRect.bottom) / 2 - pageRect.top;
+
+            // 将 lottery-container 定位到 page 的像素坐标中心，并使用 translate(-50%,-50%) 保持元素按自身中心对齐
+            container.style.left = `${Math.round(centerX)}px`;
+            container.style.top = `${Math.round(centerY)}px`;
+            container.style.transform = 'translate(-50%, -50%)';
+            // 确保使用绝对定位（CSS 已经设置，作为保险）
+            container.style.position = 'absolute';
+        } catch (e) {
+            // 安静失败，不中断抽奖逻辑
+            if (window.console && window.console.warn) console.warn('[alignLotteryToFrame] failed', e);
+        }
+    }
+
+    // 防抖工具
+    function debounce(fn, wait) {
+        let t = null;
+        return function (...args) {
+            clearTimeout(t);
+            t = setTimeout(() => fn.apply(this, args), wait);
+        };
+    }
+
+    const debouncedAlign = debounce(alignLotteryToFrame, 120);
+
+    // 初次尝试对齐（DOMContentLoaded 后）
+    setTimeout(alignLotteryToFrame, 30);
+
+    // 当所有资源（包括 bg 图片）加载完成后再尝试一次，防止图片/字体导致的布局偏移
+    window.addEventListener('load', () => {
+        setTimeout(alignLotteryToFrame, 40);
+    });
+
+    // 窗口resize时防抖重新对齐
+    window.addEventListener('resize', debouncedAlign);
 });
-// No runtime alignment: CSS now centers the grid both horizontally and vertically.
