@@ -1218,6 +1218,15 @@ body::after {
     }
 }
 
+/* 响应式：微调九宫格在小屏幕时的垂直位置，避免被顶部装饰遮挡 */
+@media (max-width: 480px) {
+    .lottery-container { --grid-top: 56%; }
+}
+
+@media (max-width: 360px) {
+    .lottery-container { --grid-top: 58%; }
+}
+
 /* 超小屏幕 */
 @media (max-width: 360px) {
     .main-title {
