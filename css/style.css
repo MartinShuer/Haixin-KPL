@@ -269,11 +269,11 @@ body::after {
 .button-container {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     width: 100%;
     display: flex;
     justify-content: center;
-    bottom: 8%; /* keep button within 9:16 canvas */
+    top: 50%; /* move button vertically to 50% of canvas */
     z-index: 10;
     pointer-events: none;
 }
