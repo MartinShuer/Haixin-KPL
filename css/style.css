@@ -273,7 +273,8 @@ body::after {
     width: 100%;
     display: flex;
     justify-content: center;
-    top: 25%; /* move button vertically to 25% of canvas (moved up) */
+    /* Place button at 12/16 of the canvas height (long side = 16) */
+    top: calc(100% * 12 / 16);
     z-index: 10;
     pointer-events: none;
 }
