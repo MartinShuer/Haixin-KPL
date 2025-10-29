@@ -245,12 +245,12 @@ body::after {
 
 /* Background image element styling: use object-fit to show full image reliably */
 .bg-img {
-    /* 将背景图片固定在视口，按 contain 缩放以保证整图可见 */
-    position: fixed;
+    /* 背景图相对于页面卡片容器定位（保持在 9:16 容器内完整显示） */
+    position: absolute; /* 相对于 .main-page / .lottery-page / .submit-page */
     inset: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: contain; /* ensure whole image visible */
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* ensure whole image visible inside the card */
     object-position: center center;
     pointer-events: none;
     user-select: none;
