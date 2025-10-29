@@ -555,19 +555,15 @@ body::after {
 }
 
 .lottery-btn:hover {
+    /* 仅做视觉反馈：缩放与高光，避免改变布局或定位以免抖动 */
     transform: scale(1.08);
     box-shadow: 0 0 30px rgba(0, 206, 209, 0.7);
     background: linear-gradient(135deg, #00F5FF 0%, #00CED1 100%);
-    --grid-width: 72%;
-    width: var(--grid-width);
-    max-width: 460px;
-    aspect-ratio: 1 / 1; /* 正方形九宫格 */
-    /* 居中放置：左右和上下都相对于 .lottery-page 居中 */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    line-height: 1.4;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* 确保中间按钮内部的图片不拦截点击事件（点击传递到 .lottery-btn） */
+.lottery-grid .lottery-btn img {
+    pointer-events: none;
 }
 
 .prize-name {
