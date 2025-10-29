@@ -275,7 +275,9 @@ body::after {
     display: flex;
     justify-content: center;
     /* Place button at 12/16 of the canvas height (long side = 16) */
-    top: calc(100% * 12 / 16);
+     /* ensure the BOTTOM of the button does not cross the safe line;
+         move slightly up from 12/16 so it stays inside background */
+     top: calc(100% * 11 / 16);
     z-index: 10;
     pointer-events: none;
 }
