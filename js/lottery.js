@@ -237,22 +237,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // frame-based 对齐：把 .lottery-container 的中心对齐到装饰框 .decor-lottery-frame 的视觉中心
     function alignLotteryToFrame() {
         try {
+            // 优先使用显式的装饰框元素（若存在），否则回退到背景图片中心
             const frame = document.querySelector('.decor-lottery-frame');
+            const bgImg = document.querySelector('.bg-img');
             const container = document.querySelector('.lottery-container');
             const page = document.querySelector('.lottery-page') || document.querySelector('.container');
-            if (!frame || !container || !page) return;
+            if (!container || !page) return;
 
-            // 计算 frame 在 page 内的中心坐标（相对于 page 的左上角）
+            // 计算参考元素的边界（优先 frame，其次背景图片）
+            const refRect = (frame && frame.getBoundingClientRect()) || (bgImg && bgImg.getBoundingClientRect());
+            if (!refRect) return;
+
             const pageRect = page.getBoundingClientRect();
-            const frameRect = frame.getBoundingClientRect();
 
-            const centerX = (frameRect.left + frameRect.right) / 2 - pageRect.left;
-            const centerY = (frameRect.top + frameRect.bottom) / 2 - pageRect.top;
+            const centerX = (refRect.left + refRect.right) / 2 - pageRect.left;
+            const centerY = (refRect.top + refRect.bottom) / 2 - pageRect.top;
 
             // 将 lottery-container 定位到 page 的像素坐标中心，并使用 translate(-50%,-50%) 保持元素按自身中心对齐
             container.style.left = `${Math.round(centerX)}px`;
             container.style.top = `${Math.round(centerY)}px`;
             container.style.transform = 'translate(-50%, -50%)';
+            // 确保容器位于装饰之上
+            container.style.zIndex = '3';
             // 确保使用绝对定位（CSS 已经设置，作为保险）
             container.style.position = 'absolute';
         } catch (e) {
