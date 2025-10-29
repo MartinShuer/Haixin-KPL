@@ -199,14 +199,12 @@ body::after {
 /* ==================== 主页样式 ==================== */
 .main-page {
     width: 100%;
-    /* use the container's height (9:16 canvas) instead of viewport height */
-    height: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    /* keep padding responsive inside the 9:16 container */
-    padding: 6% 6%;
+    padding: 40px 20px;
     /* background image deferred to JS lazy loader to improve first paint */
     background: none;
     background-color: #0a1f2e;
@@ -271,16 +269,11 @@ body::after {
 .button-container {
     position: absolute;
     left: 50%;
-    /* center horizontally; vertically align BOTTOM of the button to the 12/16 line */
-    transform: translate(-50%, -100%);
+    transform: translateX(-50%);
     width: 100%;
     display: flex;
     justify-content: center;
-    /* Place button at 12/16 of the canvas height (long side = 16) */
-     /* Place the button center at 2/16 of the canvas height (near top) */
-     top: calc(100% * 2 / 16);
-     /* center the button at that point */
-     transform: translate(-50%, -50%);
+    bottom: 8%; /* keep button within 9:16 canvas */
     z-index: 10;
     pointer-events: none;
 }
