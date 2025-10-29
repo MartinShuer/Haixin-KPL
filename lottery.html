@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海信KPL抽奖活动 - 抽奖</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="lottery-page">
+            
+            <div class="lottery-container">
+                <div class="lottery-grid">
+                    <!-- 九宫格布局：1 2 3 / 8 9 4 / 7 6 5 -->
+                    <div class="grid-item prize" data-index="0" data-prize="一等奖">
+                        <img src="images/1st.png" alt="一等奖" class="prize-img-1st" />
+                    </div>
+                    <div class="grid-item prize" data-index="1" data-prize="谢谢参与">
+                        <img src="images/thanks.png" alt="谢谢参与" class="prize-img-thanks" />
+                    </div>
+                    <div class="grid-item prize" data-index="2" data-prize="二等奖">
+                        <img src="images/2nd.png" alt="二等奖" class="prize-img-2nd" />
+                    </div>
+                    <div class="grid-item prize" data-index="7" data-prize="谢谢参与">
+                        <img src="images/thanks.png" alt="谢谢参与" class="prize-img-thanks" />
+                    </div>
+                    <div class="grid-item lottery-btn" id="lotteryBtn">
+                        <img src="images/start-9.png" alt="开始抽奖" class="start-9-btn-img" />
+                    </div>
+                    <div class="grid-item prize" data-index="3" data-prize="三等奖">
+                        <img src="images/3rd.png" alt="三等奖" class="prize-img-3rd" />
+                    </div>
+                    <div class="grid-item prize" data-index="6" data-prize="五等奖">
+                        <img src="images/5th.png" alt="五等奖" class="prize-img-5th" />
+                    </div>
+                    <div class="grid-item prize" data-index="5" data-prize="四等奖">
+                        <img src="images/4th.png" alt="四等奖" class="prize-img-4th" />
+                    </div>
+                    <div class="grid-item prize" data-index="4" data-prize="谢谢参与">
+                        <img src="images/thanks.png" alt="谢谢参与" class="prize-img-thanks" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/lottery.js"></script>
+    <!-- 结果弹框（大幅度视觉弹窗，类似截图风格） -->
+    <div id="resultModal" class="result-modal hidden" aria-hidden="true">
+        <div class="result-modal-backdrop"></div>
+        <div class="result-modal-content result-modal-large" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+            <div class="confetti-wrap" aria-hidden="true">
+                <span class="confetti c1"></span>
+                <span class="confetti c2"></span>
+                <span class="confetti c3"></span>
+                <span class="confetti c4"></span>
+                <span class="confetti c5"></span>
+            </div>
+            <div class="result-modal-inner">
+                <div class="result-img-wrap hidden">
+                    <img id="resultImg" src="" alt="结果图片" />
+                </div>
+                <button id="resultClose" class="result-close" aria-label="关闭">✕</button>
+                <h2 id="resultTitle" class="result-title">谢谢参与</h2>
+                <p id="resultDesc" class="result-desc">再接再厉！</p>
+                <button id="resultConfirm" class="btn result-btn" aria-label="确定">
+                    <img src="images/get-button.png" alt="确定" />
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
