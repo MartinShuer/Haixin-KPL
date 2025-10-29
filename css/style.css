@@ -418,24 +418,26 @@ body::after {
 
 .lottery-container {
     width: 100%;
-    max-width: 400px;
-    margin-bottom: 30px;
-    position: absolute;
-    top: 33%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    max-width: 420px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .lottery-grid {
     display: grid;
+    width: 86%;
+    height: 86%;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
     background: rgba(0, 206, 209, 0.05);
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 0 20px rgba(0, 206, 209, 0.15);
-    border: 1px solid rgba(0, 206, 209, 0.2);
-    margin-bottom: 25px;
+    padding: 10px;
+    border-radius: 18px;
+    box-shadow: 0 0 20px rgba(0, 206, 209, 0.12);
+    border: 1px solid rgba(0, 206, 209, 0.12);
 }
 
 .grid-item {
@@ -454,6 +456,18 @@ body::after {
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(5px);
+}
+
+/* Make images inside grid responsive and constrained */
+.grid-item img {
+    width: clamp(48px, 14vw, 120px);
+    height: auto;
+    display: block;
+}
+
+/* Center (middle) button larger */
+.grid-item.center .start-9-btn-img {
+    width: clamp(80px, 20vw, 160px);
 }
 
 .grid-item::before {
