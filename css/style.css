@@ -162,8 +162,7 @@ body::after {
     transform: translateX(-50%);
     width: 90%;
     height: 26%;
-    /* background-image deferred to JS lazy loader */
-    background-image: none;
+    background-image: url('../image/decorations/index-top.png');
 }
 
 .decor-index-corner {
@@ -171,8 +170,7 @@ body::after {
     top: 10%;
     width: 34%;
     height: 22%;
-    /* background-image deferred to JS lazy loader */
-    background-image: none;
+    background-image: url('../image/decorations/index-corner.png');
 }
 
 .decor-index-bottom {
@@ -181,8 +179,7 @@ body::after {
     transform: translateX(-50%);
     width: 100%;
     height: 20%;
-    /* background-image deferred to JS lazy loader */
-    background-image: none;
+    background-image: url('../image/decorations/index-bottom-sparkles.png');
 }
 
 .title {
@@ -204,8 +201,11 @@ body::after {
     justify-content: space-between;
     align-items: center;
     padding: 40px 20px;
-    /* background image deferred to JS lazy loader to improve first paint */
-    background: none;
+    /* 显示完整背景图而不是裁切：使用 contain 并居中 */
+    background-image: url('../images/index-bg.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
     background-color: #0a1f2e;
     position: relative;
 }
@@ -367,12 +367,17 @@ body::after {
 /* ==================== 抽奖页样式 ==================== */
 .lottery-page {
     width: 100%;
-    /* 以 9:16 画布为基准，方便九宫格与背景对齐 */
-    aspect-ratio: 9 / 16;
-    display: block;
-    padding: 0;
-    /* background deferred to lazy loader */
-    background: none;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px 20px;
+    /* 显示完整背景图而不是裁切：使用 contain 并居中 */
+    background-image: url('../images/lottery-bg.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
     background-color: #0a1f2e;
     position: relative;
 }
@@ -384,8 +389,7 @@ body::after {
     transform: translateX(-50%);
     width: 92%;
     height: 48%;
-    /* background-image deferred to JS lazy loader */
-    background-image: none;
+    background-image: url('../image/decorations/lottery-frame.png');
 }
 
 .decor-lottery-top {
@@ -394,8 +398,7 @@ body::after {
     transform: translateX(-50%);
     width: 90%;
     height: 10%;
-    /* background-image deferred to JS lazy loader */
-    background-image: none;
+    background-image: url('../image/decorations/lottery-topbar.png');
 }
 
 .decor-lottery-bottom {
@@ -404,8 +407,7 @@ body::after {
     transform: translateX(-50%);
     width: 92%;
     height: 18%;
-    /* background-image deferred to JS lazy loader */
-    background-image: none;
+    background-image: url('../image/decorations/lottery-bottom-rules-bg.png');
 }
 
 .lottery-page .title {
@@ -415,59 +417,25 @@ body::after {
 }
 
 .lottery-container {
-    /* 九宫格容器：保持正方形并相对于 .lottery-page 定位
-       通过 --grid-width / --grid-top / --grid-left 可微调 */
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 30px;
     position: absolute;
-    --grid-width: 72%;
-    --grid-left: 50%;
-    --grid-top: 50%;
-    width: var(--grid-width);
-    max-width: 460px;
-    aspect-ratio: 1 / 1; /* 正方形九宫格 */
-    top: var(--grid-top);
-    left: var(--grid-left);
+    top: 33%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 3;
 }
 
 .lottery-grid {
-    width: 100%;
-    height: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 6%;
+    gap: 12px;
     background: rgba(0, 206, 209, 0.05);
-    padding: 6%;
+    padding: 20px;
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0, 206, 209, 0.15);
     border: 1px solid rgba(0, 206, 209, 0.2);
-    box-sizing: border-box;
-}
-
-/* 让格子内的 img 自适应，按钮大小使用相对单位以适配不同屏幕 */
-.lottery-grid .grid-item img {
-    width: 70%;
-    height: auto;
-    object-fit: contain;
-    display: block;
-}
-
-/* 中间的九宫格按钮通常更突出，允许单独放大 */
-.lottery-grid .lottery-btn .start-9-btn-img {
-    width: min(60%, 160px);
-    height: auto;
-}
-
-/* 小屏幕微调 */
-@media (max-width: 420px) {
-    .lottery-container { --grid-width: 86%; }
-    .lottery-grid { gap: 4%; padding: 4%; }
-    .lottery-grid .grid-item img { width: 78%; }
-    .lottery-grid .lottery-btn .start-9-btn-img { width: min(68%, 120px); }
+    margin-bottom: 25px;
 }
 
 .grid-item {
@@ -612,7 +580,11 @@ body::after {
 .submit-page {
     width: 100%;
     min-height: 100vh;
-    background: url('../images/submit-bg.jpg') center top/100% auto no-repeat;
+    /* 显示完整背景图而不是裁切：使用 contain 并居中 */
+    background-image: url('../images/submit-bg.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
     background-color: #0a1f2e;
     padding: 40px 25px;
     display: flex;
