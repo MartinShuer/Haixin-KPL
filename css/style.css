@@ -982,6 +982,14 @@ body::after {
     min-height: 100px;
 }
 
+/* 地址输入框与其它输入框保持一致的宽度/内边距，超长内容显示水平滚动 */
+.submit-page.has-prize .form-group textarea {
+    white-space: pre; /* 不自动换行，以便出现水平滚动条 */
+    overflow-x: auto;
+    overflow-y: auto;
+    resize: vertical; /* 允许垂直调整高度 */
+}
+
 /* 居中显示并使用指定提交图片 */
 .submit-page.has-prize .submit-btn.start-btn {
     width: min(340px, 86%);
