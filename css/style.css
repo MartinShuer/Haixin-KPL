@@ -284,12 +284,12 @@ body::after {
 .button-container {
     position: absolute;
     left: 50%;
-    /* 水平居中 + 垂直定位到背景高度的 3/5（60%） */
+    /* 水平居中 + 垂直定位到背景高度的 4/5（80%） */
     transform: translate(-50%, -50%);
     width: 100%;
     display: flex;
     justify-content: center;
-    top: 60%; /* 将按钮竖直放置在容器高度的 60%（即 3/5） */
+    top: 80%; /* 将按钮竖直放置在容器高度的 80%（即 4/5） */
     /* 强制放到最前面（使用大数并加 !important 以覆盖任何特殊上下文） */
     z-index: 2147483647 !important;
     pointer-events: auto !important; /* 允许点击（debug/最终都可用） */
