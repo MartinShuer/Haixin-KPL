@@ -201,11 +201,7 @@ body::after {
     justify-content: space-between;
     align-items: center;
     padding: 40px 20px;
-    /* 显示完整背景图而不是裁切：使用 contain 并居中 */
-    background-image: url('../images/index-bg.jpg');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: contain;
+    /* 背景图改为页面内 <img class="bg-img">，以 object-fit:contain 保证整图可见 */
     background-color: #0a1f2e;
     position: relative;
 }
@@ -249,10 +245,11 @@ body::after {
 
 /* Background image element styling: use object-fit to show full image reliably */
 .bg-img {
-    position: absolute;
+    /* 将背景图片固定在视口，按 contain 缩放以保证整图可见 */
+    position: fixed;
     inset: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     object-fit: contain; /* ensure whole image visible */
     object-position: center center;
     pointer-events: none;
@@ -394,11 +391,7 @@ body::after {
     justify-content: flex-start;
     align-items: center;
     padding: 30px 20px;
-    /* 显示完整背景图而不是裁切：使用 contain 并居中 */
-    background-image: url('../images/lottery-bg.jpg');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: contain;
+    /* 背景图改为页面内 <img class="bg-img">，以 object-fit:contain 保证整图可见 */
     background-color: #0a1f2e;
     position: relative;
 }
@@ -632,10 +625,7 @@ body::after {
     width: 100%;
     min-height: 100vh;
     /* 显示完整背景图而不是裁切：使用 contain 并居中 */
-    background-image: url('../images/submit-bg.jpg');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: contain;
+    /* 背景图改为页面内 <img class="bg-img">，以 object-fit:contain 保证整图可见 */
     background-color: #0a1f2e;
     padding: 40px 25px;
     display: flex;
