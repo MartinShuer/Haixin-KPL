@@ -449,8 +449,12 @@ body::after {
     max-width: 460px;
     aspect-ratio: 1 / 1; /* 正方形九宫格 */
     top: var(--grid-top);
-    left: var(--grid-left);
-    transform: translate(-50%, -50%);
+    /* 使用左右 auto margin 在包含块内水平居中，避免 transform 导致的偏移问题 */
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateY(-50%); /* 仅垂直居中调整 */
     display: flex;
     align-items: center;
     justify-content: center;
