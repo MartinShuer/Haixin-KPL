@@ -1240,3 +1240,22 @@ body::after {
         box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
     }
 }
+
+/* ==================== 临时 DEBUG 帮助样式（测试使用，调好后请删除） ==================== */
+/* 使用方法：在 <body> 上添加 class="debug"，刷新页面即可看到边框定位 */
+body.debug .container {
+    outline: 3px dashed rgba(255, 0, 0, 0.75);
+}
+body.debug .bg-img {
+    outline: 3px dashed rgba(0, 255, 0, 0.75);
+    opacity: 0.98;
+    /* 保证轮廓可见（不改变布局） */
+}
+body.debug .lottery-container {
+    outline: 2px dashed rgba(0, 120, 255, 0.75);
+}
+
+/* 便于移动端调试：降低 debug 元素 pointer-events 以免影响交互 */
+body.debug .bg-img,
+body.debug .container,
+body.debug .lottery-container { pointer-events: none; }
