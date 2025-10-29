@@ -289,8 +289,9 @@ body::after {
     display: flex;
     justify-content: center;
     bottom: 13%; /* 约膝盖高度，9:16画布下13%较为自然 */
-    z-index: 9999; /* 提高到最上层，防止被背景或装饰遮挡 */
-    pointer-events: auto; /* 允许点击（debug/最终都可用） */
+    /* 强制放到最前面（使用大数并加 !important 以覆盖任何特殊上下文） */
+    z-index: 2147483647 !important;
+    pointer-events: auto !important; /* 允许点击（debug/最终都可用） */
 }
 
 .start-lottery-btn {
@@ -303,6 +304,9 @@ body::after {
     display: flex;
     align-items: center;
     justify-content: center;
+    /* 保证按钮自身位于最上层（相对于其父 stacking context） */
+    position: relative;
+    z-index: 2147483647 !important;
 }
 
 .start-btn-img {
@@ -316,6 +320,9 @@ body::after {
     filter: drop-shadow(0 8px 32px rgba(0,0,0,0.25));
     transition: transform 0.2s;
     animation: breathe 2.5s ease-in-out infinite;
+    /* 同时把图片层也提升，防止其被伪元素或其他装饰遮挡 */
+    position: relative;
+    z-index: 2147483647 !important;
 }
 
 @keyframes breathe {
