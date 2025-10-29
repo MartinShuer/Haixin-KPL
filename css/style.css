@@ -269,7 +269,8 @@ body::after {
 .button-container {
     position: absolute;
     left: 50%;
-    transform: translate(-50%, -50%);
+    /* center horizontally; vertically align BOTTOM of the button to the 12/16 line */
+    transform: translate(-50%, -100%);
     width: 100%;
     display: flex;
     justify-content: center;
