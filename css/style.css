@@ -558,15 +558,14 @@ body::after {
     transform: scale(1.08);
     box-shadow: 0 0 30px rgba(0, 206, 209, 0.7);
     background: linear-gradient(135deg, #00F5FF 0%, #00CED1 100%);
-}
-
-.lottery-btn.disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    pointer-events: none;
-}
-
-.lottery-text {
+    --grid-width: 72%;
+    width: var(--grid-width);
+    max-width: 460px;
+    aspect-ratio: 1 / 1; /* 正方形九宫格 */
+    /* 居中放置：左右和上下都相对于 .lottery-page 居中 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     line-height: 1.4;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -1219,14 +1218,7 @@ body::after {
     }
 }
 
-/* 响应式：微调九宫格在小屏幕时的垂直位置，避免被顶部装饰遮挡 */
-@media (max-width: 480px) {
-    .lottery-container { --grid-top: 56%; }
-}
-
-@media (max-width: 360px) {
-    .lottery-container { --grid-top: 58%; }
-}
+/* Removed manual --grid-top responsive overrides: grid is centered both axes by default. */
 
 /* 超小屏幕 */
 @media (max-width: 360px) {

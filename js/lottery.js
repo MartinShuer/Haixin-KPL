@@ -233,42 +233,4 @@ class LotteryGame {
 document.addEventListener('DOMContentLoaded', () => {
     new LotteryGame();
 });
-
-// Align lottery grid center to decorative frame center for pixel-perfect placement
-function alignLotteryGridToFrame() {
-    const frame = document.querySelector('.decor-lottery-frame');
-    const container = document.querySelector('.lottery-container');
-    if (!frame || !container) return;
-
-    // Find offset parent for container (should be .lottery-page)
-    const parent = container.offsetParent || container.parentElement;
-    const frameRect = frame.getBoundingClientRect();
-    const parentRect = parent.getBoundingClientRect();
-
-    // compute center of frame relative to parent
-    const centerX = frameRect.left + frameRect.width / 2 - parentRect.left;
-    const centerY = frameRect.top + frameRect.height / 2 - parentRect.top;
-
-    // Apply absolute left/top in pixels and keep the vertical offset from --grid-top as baseline
-    // We'll set left to centerX (in px) and keep transform translate(-50%,-50%) so container centers at that point
-    container.style.left = centerX + 'px';
-    // set top to either computed centerY or keep existing var(--grid-top) translated to pixels
-    container.style.top = centerY + 'px';
-    container.style.transform = 'translate(-50%, -50%)';
-}
-
-// Run alignment on load and on resize (debounced)
-window.addEventListener('load', () => {
-    alignLotteryGridToFrame();
-});
-let __alignTimer = null;
-window.addEventListener('resize', () => {
-    clearTimeout(__alignTimer);
-    __alignTimer = setTimeout(alignLotteryGridToFrame, 120);
-});
-
-// Also re-run when images (background or decor) load which may shift layout
-const imgs = document.querySelectorAll('img');
-imgs.forEach(img => {
-    if (!img.complete) img.addEventListener('load', () => setTimeout(alignLotteryGridToFrame, 40));
-});
+// No runtime alignment: CSS now centers the grid both horizontally and vertically.
