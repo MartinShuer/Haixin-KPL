@@ -997,8 +997,10 @@ body::after {
     padding: 0;
     aspect-ratio: 320 / 84;
     cursor: pointer;
+    /* 下移提交按钮 20%（视觉向下移动） */
+    transform: translateY(20%);
 }
-.submit-page.has-prize .submit-btn.start-btn:active { transform: translateY(1px); }
+.submit-page.has-prize .submit-btn.start-btn:active { transform: translateY(calc(20% + 1px)); }
 
 /* 若非中奖者（不应到达此页）仍使用常规样式 */
 .submit-page:not(.has-prize) .submit-btn.start-btn {
