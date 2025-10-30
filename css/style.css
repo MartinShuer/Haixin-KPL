@@ -1015,29 +1015,33 @@ body::after {
     width: 100%;
 }
 
-/* 移动端回退：当屏幕较窄时改为竖直堆叠，label 在上方，输入框占满宽度 */
+/* 移动端保持标签与输入在同一行：减小 label 宽度与内边距以节省空间，允许表单横向滚动以保证同一行显示 */
 @media (max-width: 420px) {
+    .submit-form {
+        overflow-x: auto; /* 当屏幕过窄时允许水平滚动 */
+    }
     .submit-page.has-prize .form-group {
-        display: block;
-        align-items: stretch;
+        display: flex;
+        align-items: center;
         gap: 8px;
-        margin-bottom: 14px;
+        margin-bottom: 12px;
+        flex-wrap: nowrap; /* 强制不换行，标签与输入保持同行 */
     }
     .submit-page.has-prize .form-group label {
-        display: block;
-        text-align: left;
-        width: auto;
-        margin-bottom: 6px;
+        flex: 0 0 80px; /* 更窄的标签宽度以适配窄屏 */
+        text-align: right;
+        font-size: 13px;
+        margin: 0;
     }
     .submit-page.has-prize .form-group input,
     .submit-page.has-prize .form-group textarea {
-        width: 100%;
-        padding: 16px 18px;
+        padding: 10px 12px;
+        font-size: 14px;
+        min-width: 140px; /* 当容器太窄时可触发水平滚动 */
     }
     .submit-page.has-prize .submit-btn.start-btn {
-        width: 90%;
-        max-width: 360px;
-        margin: 12px auto 0;
+        width: min(320px, 86%);
+        margin: 14px auto 0;
     }
 }
 
